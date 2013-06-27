@@ -1,4 +1,13 @@
 Assignment::Application.routes.draw do
+
+  root to: "user#login"
+    
+  get "user/register"
+
+  get "user/login"
+
+  get "user/usercp"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
