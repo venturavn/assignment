@@ -1,0 +1,25 @@
+<%
+    @categories = Category.find(:all);
+    provide(:title, "Home") 
+%>
+<div class="row">
+	<div class="span3">
+		<div class="well">
+    <ul class="nav nav-list">
+    <li class="nav-header">Product Category</li>
+    <% @categories.each do |category| %>
+        <%= content_tag(:li, class: if (category.id.to_i==params[:catid].to_i) then "active" else "" end) do %>
+            <%= link_to category.title, controller:"category", action:"show", catid: category.id%>
+        <% end %>
+    <% end %>
+    </ul>
+  </div>
+ 	</div>
+	<div class="span9">
+		<div class="navbar">
+			<div class="navbar-inner">
+				<a class="brand" href="#">Recommend Products</a>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,12 +1,19 @@
 Assignment::Application.routes.draw do
 
-  root to: "user#login"
-    
-  get "user/register"
+  get "yahootest/index"
 
-  get "user/login"
+  root to: "home#home"
+  #esources :users, only: [:create]
+  get "register", to: "user#register"
+  post "register", to: "user#create"
+  get "login", to: "user#login"
+  post "login", to: "user#login_check"
+  get "logout", to: "user#logout"
 
-  get "user/usercp"
+  get "yahootest", to:"yahootest#index"
+
+  get "category/:catid", to: "category#show"
+  get "category", to: "home#home"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

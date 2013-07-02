@@ -1,0 +1,16 @@
+<div class="header">
+	<div id="banner">
+		BANNER
+	</div>
+
+
+<% flash.each do |key, value| %>
+<%= content_tag :div, value, class: "alert alert-#{key}" %>
+<% end %>
+<% if cookie_flash
+	@cookie_flash.each do |message|
+		message.each do |key, value| %>
+		<%= content_tag :div, value, class: "alert alert-#{key}" %>
+	<% end
+	end 
+end%>

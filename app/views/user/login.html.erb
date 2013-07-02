@@ -1,3 +1,17 @@
-<% provide(:title, "TSE") %>
-<h1>User#login</h1>
-<p>Find me in app/views/user/login.html.erb</p>
+<% provide(:title, "Login") %>
+<div class="row">
+	<div class="span6 offset3">
+		<h3 align="center">User Login</h3>
+		<%= form_for @user, url: login_path, html: {id: "user_login_form", align: "center", class: "form-horizontal"} do |u| %>
+		<div class="control-group">
+			<%= u.label :email, class: "control-label" %>
+			<div class="controls"><%= u.text_field :email, placeholder: "username@example.com" %></div>
+		</div>
+		<div class="control-group">
+			<%= u.label :password, class: "control-label" %>
+			<div class="controls"><%= u.password_field :password %></div>
+		</div>
+			<div class="controls"><%= u.submit "Login", class: "btn btn-primary" %><input type="hidden" name="referer" value="<%= URI(request.referer).path %>"></div>
+		<% end %>
+	</div>
+</div>

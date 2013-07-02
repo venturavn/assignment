@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  category_id: 1
+  description: MyText
+  image: MyString
+  price_value: 1.5
+  price_currency: MyString
+  review_rate: 1.5
+  review_count: 1
+
+two:
+  name: MyString
+  category_id: 1
+  description: MyText
+  image: MyString
+  price_value: 1.5
+  price_currency: MyString
+  review_rate: 1.5
+  review_count: 1
