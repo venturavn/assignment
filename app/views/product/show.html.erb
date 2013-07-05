@@ -1,0 +1,41 @@
+<% provide(:title, @product[:name]) %>
+<div class="row">
+    <%= render('layouts/categories') %>
+    <div class="span9">
+
+        <ul class="breadcrumb">
+            <li><%= link_to 'ホーム', root_url%><span class="divider">/</span></li>
+            <li><%= link_to @category[:title], controller:'category', action:'show', categoryid: @category[:id] %><span class="divider">/</span></li>
+            <li><%=@product[:name]%></li>
+        </ul>
+        <div class="product">
+            <table width="100%">
+                <tr>
+                    <td width="146px"><%= tag :img, src: @product[:image], style:'margin-bottom:5px' %>
+                            <div class="span2 cart input-append" align='right' onclick="event.stopPropagation()">
+                              <input type="text" name="quantity" class="cartNum" value='1'>
+                              <button class="btn cartBtn" product-id="<%=@product[:id]%>"><span class="icon-shopping-cart"></span> +</button>
+                          </div></td>
+                    <td style="vertical-align:top; padding-left:20px">
+                        <h1><%=@product[:name]%></h1>
+                        <div><span class="attr_name">Price</span> <span class="price"><%= @product[:price_value] %> <%= @product[:price_currency] %></span></div>
+                        <div><span class="attr_name">Category</span> <%= @category[:title] %></div>
+                        <div><span class="attr_name">Date</span> <%=@product[:created_at]%></div>
+                        <div><span class="attr_name">Review Rate</span> <%=(@product[:review_rate]*2).round%>/10</div>
+
+                        <div>
+                      </div>
+                  </td>
+              </tr>
+          </table>
+          <h4>Description</h4>
+          <p class="description"><% if @product[:description]!='' %>
+            <%=raw @product[:description]%>
+            <% else %>
+            No description
+            <% end %>
+        </p>
+    </div>
+
+</div>
+</div>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>VenShop</h1>
+    <p>
+      Dear customer,
+      Thank you for puchased our product(s), this is the list of item(s) you have purchased:
+    </p>
+    <ol>
+      <% @products.each do |product|  %>
+      <li><%=product[:name]%>. Quantity: <%=product[:quantity]%></li>
+      <% end %>
+    </ol>
+    <p>Thanks again!</p>
+  </body>
+</html>

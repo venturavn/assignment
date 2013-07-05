@@ -1,0 +1,6 @@
+<% provide(:title, "Profile") %>
+<div class="row">
+		<h3 align="center">Your Profile</h3>
+		<div class="span1 offset3">Email</div>
+		<div class="span5"><%= @user.email['@'] = ' at '; get_user.email %> - <%= link_to "Edit", usercp_path %></div>
+</div>

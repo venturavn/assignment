@@ -24,4 +24,13 @@ module ApplicationHelper
 			cookies[:flash] = ActiveSupport::JSON.encode(Array[message])
 		end
 	end
+
+	def backup_referer temp_referer
+		if temp_referer != :session
+			session['backup_referer'] = temp_referer
+		else 
+			session['backup_referer'] = session['referer']
+		end
+		session.delete('referer')
+	end
 end

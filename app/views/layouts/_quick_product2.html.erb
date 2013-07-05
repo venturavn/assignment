@@ -1,0 +1,12 @@
+<div class="quick_product2 row">
+  <div class="seperator span9">
+  </div>
+    <div class="span1" align="right"><%= tag :img, src: @product[:image] %></div>
+    <div class="span4"><h3><%= link_to @product[:name], controller: 'product', action: 'show', productid: @product[:id] %></h3>
+    <span class="rate">Review rate: <%= (@product[:review_rate]*2).round %>/10</span></div>
+    <div class="span2 price"><%= @product[:price_value] %> <%= @product[:price_currency] %> </div>
+    <div class="span2 cart input-append" align='right' onclick="event.stopPropagation()">
+      <input type="text" name="quantity" class="cartNum" value='1'>
+      <button class="btn cartBtn" product-id="<%=@product[:id]%>"><span class="icon-shopping-cart"></span> +</button>
+    </div>
+</div>

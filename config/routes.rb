@@ -1,5 +1,9 @@
 Assignment::Application.routes.draw do
 
+  get "cart/index"
+
+  get "product/show"
+
   get "yahootest/index"
 
   root to: "home#home"
@@ -9,12 +13,29 @@ Assignment::Application.routes.draw do
   get "login", to: "user#login"
   post "login", to: "user#login_check"
   get "logout", to: "user#logout"
+  get "profile", to: "user#profile"
+  get "usercp", to: "user#usercp"
+  put "usercp", to: "user#update"
 
   get "yahootest", to:"yahootest#index"
 
-  get "category/:catid", to: "category#show"
   get "category", to: "home#home"
+  get "category/:categoryid", to: "category#show"
+  get "category/:categoryid/:page", to: "category#show"
 
+  get "product/add", to: "product#add"
+  post "product/add", to: "product#create"
+  get "product/:productid", to: "product#show"
+
+  get "user-products", to: "category#user_products"
+  get "user-products/:page", to: "category#user_products"
+
+  get "cart", to: "cart#index"
+  get "cart/add/:productid/:quantity", to: "cart#create"
+  get "cart/edit/:productid/:quantity", to: "cart#edit"
+  get "cart/delete/:productid", to: "cart#delete"
+  get "cart/empty", to: "cart#empty"
+  get "cart/purchase", to: "cart#purchase"
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

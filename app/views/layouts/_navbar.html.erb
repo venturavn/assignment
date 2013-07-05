@@ -2,7 +2,7 @@
       <div class="navbar-inner">
         <div class="container">
           <div style="float:left">
-            <%= link_to "MYSHOP", '/', id: "logo" %>
+            <%= link_to "VenShop", '/', id: "logo" %>
 
             <input type="text" class="search-query" id="searchTextbox" placeholder="Type something here and hit Enter..">
           </div>
@@ -11,13 +11,21 @@
               <li><%= link_to "Home",    '/' %></li>
               <li><%= link_to "Help",    '/faq' %></li>
               <% if (!session[:userid]) %>
-              <li><%= link_to "Sign in", 'login' %></li>
+              <li><%= link_to "Sign in", login_path %></li>
+              <li><%= link_to "Register", register_path %></li>
               <% else %>
               <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#"><%= get_user.email %></a>
                 <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                  <li role="presentation"><%= link_to "Your Profile" , "/usercp", role:"menuitem", tabindex: "-1" %></li>
-                  <li role="presentation"><%= link_to "Logout" , "/logout", role:"menuitem", tabindex: "-1" %></li>
+                  <li role="presentation"><%= link_to "/profile", role:"menuitem", tabindex: "-1" do %><span class='icon-user'></span> Your Profile<% end %></li>
+                  <li role="presentation"><%= link_to "/usercp", role:"menuitem", tabindex: "-1" do %><span class='icon-pencil'></span> Edit Profile<% end %></li>
+                   <li class="divider"></li>
+                  <li role="presentation"><%= link_to "/cart", role:"menuitem", tabindex: "-1" do %><span class='icon-shopping-cart'></span> Cart<% end %></li>
+                    <li class="divider"></li>
+                  <li role="presentation"><%= link_to "/user-product", role:"menuitem", tabindex: "-1" do %><span class='icon-th-list'></span> Your Products<% end %></li>
+                  <li role="presentation"><%= link_to "/product/add", role:"menuitem", tabindex: "-1" do %><span class='icon-plus-sign'></span> Add Products<% end %></li>
+                    <li class="divider"></li>
+                  <li role="presentation"><%= link_to "/logout", role:"menuitem", tabindex: "-1" do %><span class='icon-arrow-left'></span> Log Out<% end %></li>
                 </ul>
               </li>
               <% end %>

@@ -1,2 +1,26 @@
-<h1>User#usercp</h1>
-<p>Find me in app/views/user/usercp.html.erb</p>
+<% provide(:title, "Edit Your Profile") %>
+<div class="row">
+	<div class="span6 offset3">
+		<h3 align="center">Edit Your Profile</h3>
+		<%= render("layouts/error_messages") %>
+		<%= form_for get_user, url: usercp_path, html: {id: "user_register_form", align: "center", class: "form-horizontal"} do |u| %>
+		<div class="control-group">
+			<%= u.label :email, class: "control-label" %>
+			<div class="controls"><%= u.text_field :email, placeholder: "username@example.com", disabled: "disabled" %></div>
+		</div>
+		<div class="control-group">
+			<%= u.label :old_password, class: "control-label" %>
+			<div class="controls"><%= u.password_field :old_password %></div>
+		</div>
+		<div class="control-group">
+			<%= u.label :password, "New Password", class: "control-label" %>
+			<div class="controls"><%= u.password_field :password %></div>
+		</div>
+		<div class="control-group">
+			<%= u.label :password_confirmation, "Retype Password", class: "control-label" %>
+			<div class="controls"><%= u.password_field :password_confirmation %></div>
+		</div>
+			<div class="controls"><%= u.submit "Update", class: "btn btn-primary" %> <%= button_tag 'Reset', type: 'reset', class: "btn" %><input type="hidden" name="flag" value="register"></div>
+		<% end %>
+	</div>
+</div>

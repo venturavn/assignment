@@ -3,17 +3,23 @@
 <head>
   <title><%= page_title(yield(:title)) %> </title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= stylesheet_link_tag    "user", :media => "all" %>
+  <%= stylesheet_link_tag    params[:controller], :media => "all" %>
   <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag params[:controller] %>
+  <% if (@ckeditor) %>
+    <%= javascript_include_tag 'ckeditor/ckeditor.js' %>
+  <% end %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
 <%= render("layouts/navbar") %>
 
-    <div class="container">
+    <div class="container" id="container">
 <%= render("layouts/header") %>
       <%= yield %>
     </div>
+
+<%= render("layouts/footer") %>
 </body>
 </html>

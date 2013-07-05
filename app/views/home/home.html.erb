@@ -1,25 +1,25 @@
-<%
-    @categories = Category.find(:all);
-    provide(:title, "Home") 
-%>
+<% provide(:title, "Home") %>
 <div class="row">
-	<div class="span3">
-		<div class="well">
-    <ul class="nav nav-list">
-    <li class="nav-header">Product Category</li>
-    <% @categories.each do |category| %>
-        <%= content_tag(:li, class: if (category.id.to_i==params[:catid].to_i) then "active" else "" end) do %>
-            <%= link_to category.title, controller:"category", action:"show", catid: category.id%>
+    <%= render('layouts/categories') %>
+    <div class="span9">
+
+        <ul class="breadcrumb">
+            <li>推奨製品</li>
+        </ul>
+
+        <div class="row">
+            <% @recommended_products.each do |product| %>
+            <%= @product = product; render('layouts/quick_product') %>
+            <% end %>
+        </div>
+
+        <ul class="breadcrumb">
+            <li>新製品</li>
+        </ul>
+
+        <% @newest_products.each do |product| %>
+        <%= @product = product; render('layouts/quick_product2') %>
         <% end %>
-    <% end %>
-    </ul>
-  </div>
- 	</div>
-	<div class="span9">
-		<div class="navbar">
-			<div class="navbar-inner">
-				<a class="brand" href="#">Recommend Products</a>
-			</div>
-		</div>
-	</div>
+
+    </div>
 </div>

@@ -1,0 +1,16 @@
+<% provide(:title, @category[:title]) %>
+<div class="row">
+    <%= render('layouts/categories') %>
+    <div class="span9">
+        <ul class="breadcrumb">
+            <li><%= link_to 'ホーム', root_url%><span class="divider">/</span></li>
+            <li><%=@category[:title]%> - P.<%= @currentPage%></li>
+        </ul>
+
+        <% @products.each do |product| %>
+        <%= @product = product; render('layouts/quick_product2') %>
+        <% end %>
+    <%= will_paginate @products %>
+
+    </div>
+</div>

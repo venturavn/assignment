@@ -1,0 +1,7 @@
+<div class="span3 quick_product">
+	<div>
+		<%= tag :img, src: @product[:image] %>
+		<h3><%= link_to @product[:name], controller: 'product', action: 'show', productid: @product[:id] %></h3>
+		<div class="price"><%= @product[:price_value] %> <%= @product[:price_currency] %> <span class="rate"><%= (@product[:review_rate]*2).round %>/10</span></div>
+	</div>
+</div>

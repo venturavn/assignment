@@ -1,0 +1,46 @@
+<% provide(:title, "Add Product") %>
+<div class="row">
+    <%= render('layouts/categories') %>
+  <div class="span9">
+    <ul class="breadcrumb">
+      <li><%= link_to 'ホーム', root_url%><span class="divider">/</span></li>
+      <li>Add Product</li>
+    </ul>
+  </div>
+  <div class="span9 product_add">
+    <h3 align="center">Add Product</h3>
+    <%= @error = @product; render("layouts/error_messages") %>
+    <%= form_for @product, url: product_add_path, html: {id: "product_add_form", align: "center", class: "form-horizontal"} do |product| %>
+    <div class="control-group">
+      <%= product.label :name, class: "control-label" %>
+      <div class="controls"><%= product.text_field :name, placeholder: "Product Name" %></div>
+    </div>
+    <div class="control-group">
+      <%= product.label :price_value, "Price", class: "control-label" %>
+      <div class="controls"><%= product.text_field :price_value, placeholder: "JPY" %></div>
+    </div>
+    <div class="control-group">
+      <%= product.label :category_id, class: "control-label" %>
+      <div class="controls"><%= product.collection_select(:category_id, Category.all, :id, :title) %></div>
+    </div>
+    <div class="control-group">
+      <%= product.label :description, class: "control-label" %>
+      <div class="controls"><%= product.text_area :description, class: 'ckeditor' %></div>
+    </div>
+      <div class="controls"><%= product.submit "Add Product", class: "btn btn-primary" %> <%= button_tag 'Reset', type: 'reset', class: "btn" %><input type="hidden" name="flag" value="register"></div>
+    <% end %>
+  </div>
+</div>
+<script>
+$("#product_add_form input[name=product\\[price_value\\]]").bind("change",function (){
+  if ($(this).val().trim() == "")
+    $(this).val("")
+  else if (isNaN(parseFloat($(this).val()))) {
+    alert("Please type number in Price field");
+    $(this).val("");
+    $(this).focus();
+  } else
+    $(this).val(parseFloat($(this).val()) + " JPY");
+
+})
+</script>

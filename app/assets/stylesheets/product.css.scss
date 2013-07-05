@@ -1,0 +1,29 @@
+.product {
+  h1 {
+    font-size:20px;
+    letter-spacing: 0;
+    text-align:left;
+    margin: 5px 0px 5px 0px;
+  }
+  .attr_name {
+    display: inline-block;
+    min-width:100px;
+    text-align: right;
+    font-weight: bold;
+  }
+  .attr_name:after {
+    content: ':';
+  }
+  .price {
+    color:#F00;
+  }
+  .description {
+    padding:5px;
+    border-top:1px solid #CCC;
+  }
+}
+#product_add_form {
+  input[type=text], textarea, select, .cke {
+    width:400px;
+  }
+}

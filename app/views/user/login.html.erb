@@ -11,7 +11,7 @@
 			<%= u.label :password, class: "control-label" %>
 			<div class="controls"><%= u.password_field :password %></div>
 		</div>
-			<div class="controls"><%= u.submit "Login", class: "btn btn-primary" %><input type="hidden" name="referer" value="<%= URI(request.referer).path %>"></div>
+			<div class="controls"><%= u.submit "Login", class: "btn btn-primary" %><input type="hidden" name="referer" value="<%= if session['referer']!='none' then session['referer'] else root_url end %>"></div>
 		<% end %>
 	</div>
 </div>

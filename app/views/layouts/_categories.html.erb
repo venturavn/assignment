@@ -1,0 +1,15 @@
+<%
+    @categories = Category.find(:all);
+%>
+<div class="span3">
+    <div class="well">
+        <ul class="nav nav-list">
+        <li class="nav-header">Product Category</li>
+        <% @categories.each do |category| %>
+            <%= content_tag(:li, class: if (category.id.to_i==params[:categoryid].to_i) then "active" else "" end) do %>
+                <%= link_to category.title, controller:"category", action:"show", categoryid: category.id, page: nil%>
+            <% end %>
+        <% end %>
+        </ul>
+    </div>
+</div>

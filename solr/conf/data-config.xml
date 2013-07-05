@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<dataConfig>
+    <dataSource driver="org.hsqldb.jdbcDriver" url="127.0.0.1:3306" user="root" />
+    <document name="products">
+        <entity name="product" query="select * from products">
+            <field column="id" name="id" />
+            <field column="name" name="name" />
+            <field column="price_value" name="price_value" />
+            <field column="description" name="description" />
+            <entity name="category_title" query="select title from categories where id='${product.category_id}'">
+                <field name="title" column="title" />
+            </entity>
+        </entity>
+    </document>
+</dataConfig>

@@ -1,0 +1,47 @@
+<% provide(:title, "Your Cart") %>
+<div class="row">
+    <%= render('layouts/categories') %>
+    <div class="span9">
+        <ul class="breadcrumb">
+            <li><%= link_to 'ホーム', root_url%><span class="divider">/</span></li>
+            <li>Your Cart</li>
+        </ul>
+
+        <%if !@products.empty? %>
+        <table class="table table-considered table-hover">
+            <thead>
+            <tr>
+                <th>Product Name</th>
+                <th align="right">Quantity</th>
+                <th align="right" colspan="3">Price</th>
+            </tr>
+            </thead>
+            <tbody>
+            <%
+            i=0
+            total_money = 0
+             @products.each do |product|
+                total_money += product[:price_value]*product[:quantity]
+                i += 1 %>
+            <tr>
+                <td><%=i%>. <%=link_to product[:name], controller:'product', action:'show', productid: product[:id]%></td>
+                <td align="right">
+                    <div class="span2 cart_edit input-append" align='right' onclick="event.stopPropagation()">
+                      <input type="text" name="quantity" class="cartNum" value='<%= product[:quantity]%>'>
+                      <button class="btn cartBtn" product-id="<%=product[:id]%>">Edit</button>
+                    </div>
+                </td>
+                <td align="right"><%= product[:price_value]*product[:quantity]%><%= product[:quantity]%> </td>
+                <td><%= product[:price_currency]%></td>
+                <td><button class="btn btn-danger cartDeleteBtn" product-id="<%=product[:id]%>">Delete</button></td>
+            </tr>
+            <% end %>
+            </tbody>
+        </table>
+            <div align="right">Total: <%=total_money%> JPY <br/><button class="btn" onclick="location.href='<%= cart_empty_path %>'">Empty <span class="icon-shopping-cart"></span></button> <button class="btn btn-primary" onclick="location.href='<%= cart_purchase_path %>'">Purchase</button></div>
+        <% else %>
+        <p> You don't have anything in your cart. Let's go around and pick something :).</p>
+        <% end %>
+
+    </div>
+</div>

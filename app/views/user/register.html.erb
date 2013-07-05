@@ -2,7 +2,7 @@
 <div class="row">
 	<div class="span6 offset3">
 		<h3 align="center">User Registration</h3>
-		<%= render("layouts/error_messages") %>
+		<%= @error = @user; render("layouts/error_messages") %>
 		<%= form_for @user, url: register_path, html: {id: "user_register_form", align: "center", class: "form-horizontal"} do |u| %>
 		<div class="control-group">
 			<%= u.label :email, class: "control-label" %>
