@@ -44,7 +44,7 @@ class CartController < ApplicationController
     if cartitem_existed.nil?
       return render json: {errorCode:2}
     else
-      cartitem_existed[:quantity] += quantity
+      cartitem_existed[:quantity] = quantity
 
       if cartitem_existed.save
         return render json: {errorCode:0, successCode:1}

@@ -34,4 +34,16 @@ Assignment::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  ActionMailer::Base.delivery_method = :smtp
+
+  ActionMailer::Base.server_settings = {
+     :address => "smtp.gmail.com",
+     :port => 465,
+     :domain => "gmail.com",
+     :authentication => :login,
+     :user_name => "ventura2vn@gmail.com",
+     :password => "1p2o3i4u5y6",
+  }
+  ActionMailer::Base.default_content_type = "text/html"
 end

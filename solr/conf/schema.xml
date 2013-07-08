@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema name="Recruit" version="1.1">
+<schema name="VenShop" version="1.1">
 
   <types>
     <fieldType name="int" class="solr.IntField" omitNorms="true"/>
@@ -47,34 +47,22 @@
     </fieldType>
   </types>
   <dataSource type="FileDataSource" encoding="UTF-8"/>
-  <fields>
 
-    <field name="id" type="text" indexed="true" stored="true" required="true"/>
+  <fields>
+    <field name="id" type="int" indexed="true" stored="true" required="true"/>
     <field name="name" type="text" indexed="true" stored="true" required="false"/>
     <field name="description" type="text" indexed="true" stored="true" required="false"/>
-    <field name="company_name" type="text" indexed="true" stored="true" required="false"/>
-    <field name="company_address" type="text" indexed="true" stored="true" required="false"/>
-    <field name="staff_type" type="text" indexed="true" stored="true" required="false"/>
-    <field name="job_industry" type="text" indexed="true" stored="true" required="false"/>
-    <field name="job_type" type="text" indexed="true" stored="true" required="false"/>
-    <field name="salary" type="text" indexed="true" stored="true" required="false"/>
-    <field name="work_place" type="text" indexed="true" stored="true" required="false"/>
-    <field name="job_content" type="text" indexed="true" stored="true" required="false"/>
-    <field name="job_name_na" type="text" indexed="true" stored="true" required="false"/>
-    <field name="company_name_na" type="text" indexed="true" stored="true" required="false"/>
-    <field name="company_address_na" type="text" indexed="true" stored="true" required="false"/>
-    <field name="staff_type_na" type="text" indexed="true" stored="true" required="false"/>
-    <field name="job_industry_na" type="text" indexed="true" stored="true" required="false"/>
-    <field name="job_type_na" type="text" indexed="true" stored="true" required="false"/>
-    <field name="work_place_na" type="text" indexed="true" stored="true" required="false"/>
-    <field name="job_content_na" type="text" indexed="true" stored="true" required="false"/>
-
-  <field name="text" type="text_general" indexed="true" stored="false" multiValued="false"/>
+    <field name="price_value" type="float" indexed="true" stored="true" required="false"/>
+    <field name="price_currency" type="text" indexed="true" stored="true" required="false"/>
+    <field name="review_rate" type="float" indexed="true" stored="true" required="false"/>
+    <field name="image" type="text" indexed="true" stored="true" required="false"/>
+    <field name="category_id" type="int" indexed="true" stored="true" required="true"/>
+    <field name="category_title" type="text" indexed="true" stored="true" required="false"/>
 </fields>
 
-<uniqueKey>_id</uniqueKey>
+<uniqueKey>id</uniqueKey>
 
-<defaultSearchField>job_name</defaultSearchField>
+<defaultSearchField>name</defaultSearchField>
 
 <!-- SolrQueryParser configuration: defaultOperator="AND|OR" -->
  <solrQueryParser defaultOperator="AND|OR"/>

@@ -1,0 +1,6 @@
+Dear customer,
+Thank you for puchased our product(s), this is the list of item(s) you have purchased:
+ <% @products.each do |product|  %>
+  <%=product[:name]%>. Quantity: <%=product[:quantity]%>
+  <% end %>
+  Thanks again!

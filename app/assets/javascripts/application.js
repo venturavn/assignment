@@ -86,4 +86,12 @@ $('.cart_edit .cartBtn').click(function () {
       location.reload();
     });
   });
+
+  $("#searchTextbox").keydown(function(e) {
+    if(e.keyCode == 13)
+      if ($(this).val().trim() == "")
+        alert("Please input something.")
+      else
+        location.href = "/product/?q=" + $(this).val()
+  });
 });

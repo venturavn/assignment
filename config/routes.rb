@@ -27,6 +27,8 @@ Assignment::Application.routes.draw do
   post "product/add", to: "product#create"
   get "product/:productid", to: "product#show"
 
+  get "product", to: "category#search"
+
   get "user-products", to: "category#user_products"
   get "user-products/:page", to: "category#user_products"
 

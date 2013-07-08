@@ -1,3 +1,4 @@
+# encoding: utf-8
 class ProductController < ApplicationController
   def show
     @product = Product.find_by_id(params[:productid])

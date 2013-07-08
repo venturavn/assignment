@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <dataConfig>
-    <dataSource driver="org.hsqldb.jdbcDriver" url="127.0.0.1:3306" user="root" />
+    <dataSource type="JdbcDataSource" driver="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost/venshop" user="root" password="" encoding="UTF-8"/>
     <document name="products">
         <entity name="product" query="select * from products">
             <field column="id" name="id" />
             <field column="name" name="name" />
-            <field column="price_value" name="price_value" />
             <field column="description" name="description" />
-            <entity name="category_title" query="select title from categories where id='${product.category_id}'">
+            <field column="price_value" name="price_value" />
+            <field column="price_currency" name="price_currency" />
+            <field column="review_rate" name="review_rate" />
+            <field column="image" name="image" />
+            <field column="category_id" name="category_id" />
+            <entity name="category_title" query="select title as category_title from categories where id='${product.category_id}'">
                 <field name="title" column="title" />
             </entity>
         </entity>

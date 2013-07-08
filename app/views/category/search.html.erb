@@ -1,0 +1,20 @@
+<% # encoding: utf-8 %>
+<% provide(:title, "Search results") %>
+<div class="row">
+    <%= render('layouts/categories') %>
+    <div class="span9">
+        <ul class="breadcrumb">
+            <li><%= link_to 'ホーム', root_url%><span class="divider">/</span></li>
+            <li>Search results for "<%=params[:q]%>"</li>
+        </ul>
+        <% if (@products.length>0) %>
+            <% @products.each do |product| %>
+            <%= @product = product; render('layouts/quick_product_search') %>
+            <% end %>
+            <%= will_paginate @pages %>
+        <% else %>
+        <p> Sorry, there is no product match your query :(</p>
+        <% end %>
+
+    </div>
+</div>

@@ -34,4 +34,16 @@ Assignment::Application.configure do
 
   # Print deprecation notices to the stderr
   config.active_support.deprecation = :stderr
+
+    ActionMailer::Base.delivery_method = :smtp
+
+  ActionMailer::Base.server_settings = {
+     :address => "smtp.gmail.com",
+     :port => 465,
+     :domain => "gmail.com",
+     :authentication => :login,
+     :user_name => "ventura2vn@gmail.com",
+     :password => "1p2o3i4u5y6",
+  }
+  ActionMailer::Base.default_content_type = "text/html"
 end
